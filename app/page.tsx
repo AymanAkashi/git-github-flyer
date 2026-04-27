@@ -190,20 +190,41 @@ export default function Home() {
             }}
           >
             <div style={{ color: '#c9d1d9', fontWeight: 600 }}>Contributors</div>
-            <div>
-              Aymane Aggoujjil:{' '}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <img
+                src="/aymane.JPG"
+                alt="Aymane Aggoujjil avatar"
+                width={64}
+                height={64}
+                style={{ borderRadius: '999px', objectFit: 'cover', border: '1px solid rgba(139, 148, 158, 0.45)' }}
+              />
+              <span>Aymane Aggoujjil:</span>
               <a href="https://github.com/AymanAkashi" target="_blank" rel="noreferrer" style={{ color: '#58a6ff' }}>
                 github.com/AymanAkashi
               </a>
             </div>
-            <div>
-              Mohamed Mekkaoui:{' '}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <img
+                src="/mohamed.jpeg"
+                alt="Mohamed Mekkaoui avatar"
+                width={64}
+                height={64}
+                style={{ borderRadius: '999px', objectFit: 'cover', border: '1px solid rgba(139, 148, 158, 0.45)' }}
+              />
+              <span>Mohamed Mekkaoui:</span>
               <a href="https://github.com/mekkaoui-med" target="_blank" rel="noreferrer" style={{ color: '#58a6ff' }}>
                 github.com/mekkaoui-med
               </a>
             </div>
-            <div>
-              Abdellah Aghbal:{' '}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <img
+                src="/abdellah.jpeg"
+                alt="Abdellah Aghbal avatar"
+                width={64}
+                height={64}
+                style={{ borderRadius: '999px', objectFit: 'cover', border: '1px solid rgba(139, 148, 158, 0.45)' }}
+              />
+              <span>Abdellah Aghbal:</span>
               <a href="https://github.com/aaghbal" target="_blank" rel="noreferrer" style={{ color: '#58a6ff' }}>
                 github.com/aaghbal
               </a>
