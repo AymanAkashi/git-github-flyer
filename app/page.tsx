@@ -67,12 +67,15 @@ export default function Home() {
 
         <div className="content">
           <div className="top-bar">
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px', backgroundColor: 'white', padding: '10px', borderRadius: '10px' }}>
+
             <img
               src="https://www.fs-umi.ac.ma/wp-content/uploads/2020/10/logo-2.png"
               alt="University logo"
               style={{ height: '50px', width: 'auto', opacity: 0.95 }}
               className='bg-white'
-            />
+              />
+              </div>
             <div className="dept-tag">● IT DEPARTMENT</div>
             <div className="breadcrumb">
               <span>~/</span>workshops<span>/</span>version-control<span>/</span>2026
