@@ -1,21 +1,40 @@
 'use server'
 
-import { sql } from '@vercel/postgres';
+import { createPool } from '@vercel/postgres';
 import { revalidatePath } from 'next/cache';
 
+function getConnectionString() {
+  return process.env.POSTGRES_URL ?? process.env.DATABASE_URL;
+}
+
+function readText(formData: FormData, key: string) {
+  const value = formData.get(key);
+  return typeof value === 'string' ? value : undefined;
+}
+
 export async function registerUser(formData: FormData) {
-  const username = formData.get('username')?.toString();
-  const filier = formData.get('filier')?.toString();
-  const phone = formData.get('phone')?.toString();
-  const email = formData.get('email')?.toString();
+  const username = readText(formData, 'username');
+  const filier = readText(formData, 'filier');
+  const phone = readText(formData, 'phone');
+  const email = readText(formData, 'email');
 
   if (!username || !email) {
     return { error: 'Username and email are required' };
   }
 
+  const connectionString = getConnectionString();
+  if (!connectionString) {
+    return {
+      error:
+        'Database is not configured. Add POSTGRES_URL (or DATABASE_URL) in your Vercel environment variables, then redeploy.',
+    };
+  }
+
+  const db = createPool({ connectionString });
+
   try {
     // Create table if it doesn't exist (useful for first-time setup on Vercel)
-    await sql`
+    await db.sql`
       CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,
         username VARCHAR(255) NOT NULL,
@@ -27,7 +46,7 @@ export async function registerUser(formData: FormData) {
     `;
 
     // Insert the data
-    await sql`
+    await db.sql`
       INSERT INTO users (username, filier, phone, email)
       VALUES (${username}, ${filier}, ${phone}, ${email})
     `;
