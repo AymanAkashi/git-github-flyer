@@ -37,7 +37,7 @@ const topics = [
 ];
 
 const infoCards = [
-  { icon: "📅", key: "Date", value: "2026-04-30 10:00", accent: true },
+  { icon: "📅", key: "Date", value: "Coming Soon", accent: true },
   { icon: "⏱️", key: "Duration", value: "2 Hour" },
   { icon: "🖥️", key: "Format", value: "Hands-on / Lab" },
   { icon: "🎓", key: "Level", value: "All Levels Welcome" },
