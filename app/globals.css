@@ -40,18 +40,27 @@ a {
   align-items: center;
   justify-content: center;
   padding: 20px;
+  position: relative;
 }
 
 .page {
   width: min(100%, 794px);
-  min-height: min(1123px, calc(100vh - 40px));
+  height: min(1123px, calc(100vh - 40px));
   background: var(--bg);
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   display: flex;
   flex-direction: column;
   border: 1px solid rgba(255, 255, 255, 0.04);
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+}
+
+.page::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .grid-bg {
@@ -113,6 +122,12 @@ a {
   display: flex;
 }
 
+.cta-row-sticky {
+  position: sticky;
+  bottom: 0;
+  z-index: 3;
+}
+
 .top-bar {
   align-items: center;
   justify-content: space-between;
@@ -150,6 +165,22 @@ a {
 .breadcrumb {
   font-size: 11px;
   color: var(--muted);
+}
+
+.ivr-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-send;
+  min-width: 0;
+}
+
+.ivr-logo {
+  width: min(240px, 34vw);
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 12px;
+
 }
 
 .breadcrumb span,
@@ -292,6 +323,21 @@ h1 .hub {
   line-height: 2;
 }
 
+.command-sequence {
+  display: grid;
+  gap: 0;
+  min-height: calc(3 * 2em);
+}
+
+.command-line {
+  min-height: 2em;
+  white-space: nowrap;
+}
+
+.command-line-hidden {
+  visibility: hidden;
+}
+
 .prompt {
   color: var(--green);
 }
@@ -310,6 +356,23 @@ h1 .hub {
 
 .string {
   color: var(--purple);
+}
+
+/* Typewriter caret */
+.typewriter {
+  display: inline;
+}
+.typewriter .caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--text);
+  margin-left: 6px;
+  vertical-align: middle;
+  animation: tw-blink 1s steps(1) infinite;
+}
+@keyframes tw-blink {
+  50% { opacity: 0 }
 }
 
 .section-label {
@@ -412,7 +475,10 @@ h1 .hub {
   padding: 20px 24px;
   border: 1px solid rgba(240, 136, 62, 0.2);
   border-radius: 10px;
-  background: linear-gradient(135deg, rgba(240, 136, 62, 0.08), rgba(88, 166, 255, 0.06));
+  background: #090c11;
+  position: sticky;
+  bottom: 16px;
+  z-index: 3;
 }
 
 .cta-text h3 {
@@ -494,7 +560,7 @@ h1 .hub {
 
   .page {
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     border: 0;
   }
 }
@@ -511,6 +577,14 @@ h1 .hub {
   .footer {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .ivr-logo-wrap {
+    justify-content: flex-start;
+  }
+
+  .ivr-logo {
+    width: min(220px, 100%);
   }
 
   .topics-grid {

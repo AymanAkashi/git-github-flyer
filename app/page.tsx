@@ -1,6 +1,7 @@
-'use client'
+"use client"
 
 import { registerUser } from './actions';
+import CommandSequence from './components/CommandSequence';
 import RegistrationDialog from './components/RegistrationDialog';
 
 const topics = [
@@ -77,8 +78,12 @@ export default function Home() {
               />
               </div>
             <div className="dept-tag">● IT DEPARTMENT</div>
-            <div className="breadcrumb">
-              <span>~/</span>workshops<span>/</span>version-control<span>/</span>2026
+            <div className="ivr-logo-wrap">
+              <img
+                src="/ivr.png"
+                alt="IVR logo"
+                className="ivr-logo"
+              />
             </div>
           </div>
 
@@ -110,30 +115,52 @@ export default function Home() {
               <div className="cmd-col">
                 <div className="cmd-col-label">Basics</div>
                 <div className="cmd">
-                  <div>
-                    <span className="prompt">$ </span><span className="command">git </span><span className="flag">init</span> <span className="string">my-project</span>
-                  </div>
-                  <div>
-                    <span className="prompt">$ </span><span className="command">git </span><span className="flag">add</span> <span className="string">.</span>
-                  </div>
-                  <div>
-                    <span className="prompt">$ </span><span className="command">git </span><span className="flag">commit</span> <span className="string">-m "first commit"</span>
-                  </div>
+                  <CommandSequence
+                    commands={[
+                      [
+                        { text: 'git ', className: 'command' },
+                        { text: 'init', className: 'flag' },
+                        { text: ' my-project', className: 'string' },
+                      ],
+                      [
+                        { text: 'git ', className: 'command' },
+                        { text: 'add', className: 'flag' },
+                        { text: ' .', className: 'string' },
+                      ],
+                      [
+                        { text: 'git ', className: 'command' },
+                        { text: 'commit', className: 'flag' },
+                        { text: ' -m ', className: '' },
+                        { text: '"first commit"', className: 'string' },
+                      ],
+                    ]}
+                  />
                   <div><span className="comment"># ✓ Repo initialized</span></div>
                 </div>
               </div>
               <div className="cmd-col">
                 <div className="cmd-col-label">Collaboration</div>
                 <div className="cmd">
-                  <div>
-                    <span className="prompt">$ </span><span className="command">git </span><span className="flag">branch</span> <span className="string">feature/ui</span>
-                  </div>
-                  <div>
-                    <span className="prompt">$ </span><span className="command">git </span><span className="flag">push</span> <span className="string">origin feature/ui</span>
-                  </div>
-                  <div>
-                    <span className="prompt">$ </span><span className="command">gh pr </span><span className="flag">create</span> <span className="string">--fill</span>
-                  </div>
+                  <CommandSequence
+                    commands={[
+                      [
+                        { text: 'git ', className: 'command' },
+                        { text: 'branch', className: 'flag' },
+                        { text: ' feature/ui', className: 'string' },
+                      ],
+                      [
+                        { text: 'git ', className: 'command' },
+                        { text: 'push', className: 'flag' },
+                        { text: ' origin feature/ui', className: 'string' },
+                      ],
+                      [
+                        { text: 'gh ', className: 'command' },
+                        { text: 'pr ', className: 'command' },
+                        { text: 'create', className: 'flag' },
+                        { text: ' --fill', className: 'string' },
+                      ],
+                    ]}
+                  />
                   <div><span className="comment"># ✓ Pull request opened</span></div>
                 </div>
               </div>
@@ -161,7 +188,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="cta-row">
+          <div className="cta-row cta-row-sticky">
             <div className="cta-text">
               <h3>Ready to commit? 🚀</h3>
               <p>Bring your laptop · GitHub account required (free) · No prior experience needed</p>
