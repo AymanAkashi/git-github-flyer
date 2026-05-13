@@ -103,7 +103,6 @@ export default function Home() {
               all in one intensive session.
             </p>
           </div>
-
           <div className="terminal">
             <div className="terminal-bar">
               <div className="dot dot-r" />
@@ -115,6 +114,7 @@ export default function Home() {
               <div className="cmd-col">
                 <div className="cmd-col-label">Basics</div>
                 <div className="cmd">
+                  asdfdas
                   <CommandSequence
                     commands={[
                       [
