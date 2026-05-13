@@ -114,7 +114,6 @@ export default function Home() {
               <div className="cmd-col">
                 <div className="cmd-col-label">Basics</div>
                 <div className="cmd">
-                  asdfdas
                   <CommandSequence
                     commands={[
                       [
